@@ -1,0 +1,25 @@
+package com.example.demo.Controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.demo.Model.Authdetails;
+import com.example.demo.Repo.AuthdetRepo;
+
+@RestController
+public class AuthdetailsCont {
+	
+	@Autowired
+	private AuthdetRepo myRepo;
+	
+	@PostMapping("/insertAuth")
+	public void insertAuths(@RequestBody Authdetails auth)
+	{
+		System.out.println("Inserting Author :" + auth.getAuthid()+ "into table");
+		myRepo.save(auth);
+		
+	}
+
+}
